@@ -19,10 +19,10 @@ function PokemonList() {
   });
 
   if (isPending) {
-    return <div className="text-white m-auto"> 로딩 중 입니다.</div>;
+    return <div className="text-white w-screen m-auto"> 로딩 중 입니다.</div>;
   }
   if (isError) {
-    return <div className="text-white m-auto"> 에러 입니다.</div>;
+    return <div className="text-white w-screen m-auto"> 에러 입니다.</div>;
   }
 
   return (
