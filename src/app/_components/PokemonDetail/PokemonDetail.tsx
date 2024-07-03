@@ -3,7 +3,8 @@ import axios from "axios";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import React from "react";
 import Image from "next/image";
-import type { Pokemon } from "@/types";
+import type { Pokemon } from "@/app/_types";
+
 import Link from "next/link";
 
 interface Props {

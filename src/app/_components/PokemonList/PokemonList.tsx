@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import type { Pokemon } from "@/types";
+import type { Pokemon } from "@/app/_types";
 import { useRouter } from "next/navigation";
 import PokemonCard from "../PokemonCard";
 

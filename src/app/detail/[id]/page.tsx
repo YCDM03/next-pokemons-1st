@@ -1,5 +1,5 @@
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import PokemonDetail from "@/components/PokemonDetail";
+import PokemonDetail from "@/app/_components/PokemonDetail";
 
 interface Props {
   params: { id: string };

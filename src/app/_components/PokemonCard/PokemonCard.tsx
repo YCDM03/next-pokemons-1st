@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import type { Pokemon } from "../../types";
+import type { Pokemon } from "@/app/_types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
