@@ -33,7 +33,7 @@ async function PokemonDetail({ params }: Props) {
   return (
     <div
       className={
-        "bg-white px-10 w-6/12 max-h-5/6 min-w-80 mx-auto gap-2 rounded-xl flex flex-col justify-center items-center text-center overflow-y-scroll box-border"
+        "bg-white px-10 w-6/12 max-h-5/6 min-w-80 mx-auto gap-2 rounded-xl flex flex-col justify-center items-center text-center box-border"
       }
     >
       <div>

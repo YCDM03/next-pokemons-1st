@@ -3,18 +3,17 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import type { Pokemon } from "@/types";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import PokemonCard from "../PokemonCard";
 
 function PokemonList() {
-  const router = useRouter();
   const { data, isPending, isError } = useQuery({
     queryKey: ["pokemons"],
     queryFn: async (): Promise<Pokemon[]> => {
-      const { data } = await axios.get<Pokemon[]>(
-        "http://localhost:3000/api/pokemons"
-      );
-      return data;
+      const response = await fetch("http://localhost:3000/api/pokemons", {
+        method: "GET",
+      });
+      return response.json();
     },
   });
 
@@ -25,6 +24,7 @@ function PokemonList() {
       </div>
     );
   }
+
   if (isError) {
     return (
       <div className="text-white w-screen h-screen m-auto text-center content-center">
@@ -42,27 +42,7 @@ function PokemonList() {
         }
       >
         {data!.map((pokemon) => {
-          return (
-            <div
-              className={
-                "flex flex-col p-2 border border-white text-center justify-center items-center rounded hover:scale-105 cursor-pointer duration-75"
-              }
-              key={pokemon.id}
-              onClick={() => {
-                router.push(`/detail/${pokemon.id}`);
-              }}
-            >
-              <Image
-                src={`${pokemon.sprites.front_default}`}
-                alt={`${pokemon.korean_name}`}
-                width={96}
-                height={96}
-                priority
-              />
-              <div>{pokemon.korean_name}</div>
-              <div>도감번호:{pokemon.id}</div>
-            </div>
-          );
+          return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
         })}
       </div>
     </div>
