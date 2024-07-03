@@ -6,7 +6,11 @@ import Image from "next/image";
 import type { Pokemon } from "@/types";
 import Link from "next/link";
 
-async function PokemonDetail({ params }: Params) {
+interface Props {
+  params: { id: string };
+}
+
+async function PokemonDetail({ params }: Props) {
   const { id } = params;
   let illustrationNum: string = "";
   for (let i = 3; id.length <= i; i--) {
@@ -41,6 +45,7 @@ async function PokemonDetail({ params }: Params) {
         alt={data.korean_name}
         width={96}
         height={96}
+        priority
       />
       <h4 className={"font-semibold"}>이름: {data.korean_name}</h4>
 
