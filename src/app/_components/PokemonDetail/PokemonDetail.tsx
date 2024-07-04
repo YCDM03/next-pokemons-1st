@@ -51,7 +51,7 @@ async function PokemonDetail({ params }: Props) {
       <h4 className={"font-semibold"}>이름: {data.korean_name}</h4>
 
       <h4 className={"font-semibold"}>
-        <span>키: {+data.height / 10}m</span>{" "}
+        <span>키: {+data.height / 10}m</span>
         <span>무게:{+data.weight / 10}kg</span>
       </h4>
 
