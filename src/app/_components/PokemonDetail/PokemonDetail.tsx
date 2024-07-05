@@ -20,9 +20,12 @@ async function PokemonDetail({ params }: Props) {
   }
 
   const loadData = async (): Promise<Pokemon> => {
-    const response = await fetch(`http://localhost:3000/api/pokemons/${id}`, {
-      method: "GET",
-    });
+    const response = await fetch(
+      `https://next-pokemons-1st.vercel.app/api/pokemons/${id}`,
+      {
+        method: "GET",
+      }
+    );
     return response.json();
   };
 
