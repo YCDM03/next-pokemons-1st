@@ -1,10 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import React from "react";
 import Image from "next/image";
 import type { Pokemon } from "@/app/_types";
-
 import Link from "next/link";
 
 interface Props {
@@ -23,10 +20,10 @@ async function PokemonDetail({ params }: Props) {
   }
 
   const loadData = async (): Promise<Pokemon> => {
-    const { data } = await axios.get<Pokemon>(
-      `http://localhost:3000/api/pokemons/${id}`
-    );
-    return data;
+    const response = await fetch(`http://localhost:3000/api/pokemons/${id}`, {
+      method: "GET",
+    });
+    return response.json();
   };
 
   const data = await loadData();
@@ -95,7 +92,7 @@ async function PokemonDetail({ params }: Props) {
         className={
           "p-2 my-8 bg-blue-500 rounded-md text-white hover:opacity-95"
         }
-        href="/"
+        href={"/"}
       >
         뒤로 가기
       </Link>

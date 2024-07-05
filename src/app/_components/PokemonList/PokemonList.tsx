@@ -5,7 +5,7 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import type { Pokemon } from "@/app/_types";
 import { useRouter } from "next/navigation";
 import PokemonCard from "../PokemonCard";
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const TOTAL_POKEMON = 151;
 const PAGE_SIZE = 20;
@@ -36,6 +36,10 @@ function PokemonList() {
   });
 
   useEffect((): void => {
+    sessionStorage.getItem("MainPageScrollY")
+      ? window.scrollTo(0, Number(sessionStorage.getItem("MainPageScrollY")))
+      : null;
+
     const onIntersect = ([entries]: IntersectionObserverEntry[]) => {
       if (entries.isIntersecting) fetchNextPage();
     };
@@ -46,10 +50,12 @@ function PokemonList() {
 
     const observer = new IntersectionObserver(onIntersect, option);
 
-    if (!isPending) {
+    if (!isPending && !isError) {
       observer.observe($observer.current!);
     }
-  }, [isPending]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPending, isError]);
 
   if (isPending) {
     return (

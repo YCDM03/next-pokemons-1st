@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import type { Pokemon } from "@/app/_types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -17,6 +17,10 @@ function PokemonCard({ pokemon }: Props) {
         "flex flex-col p-2 border border-white text-center justify-center items-center rounded hover:scale-105 cursor-pointer duration-75"
       }
       onClick={() => {
+        sessionStorage.setItem(
+          "MainPageScrollY",
+          JSON.stringify(window.scrollY)
+        );
         router.push(`/detail/${pokemon.id}`);
       }}
     >
